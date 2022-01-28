@@ -10,6 +10,31 @@ download(){
 
 echo "hello download"
 
+urlparser 
+
+newurl=$(<fileurl.txt)
+
+headers="-H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0' 
+         -H 'Accept: */*' 
+         -H 'Accept-Language: en-US,en;q=0.5'
+         --compressed -H 'Origin: https://www.youtube.com'
+         -H 'Alt-Used: rr1---sn-hpa7kn7e.googlevideo.com' 
+         -H 'Connection: keep-alive' 
+         -H 'Referer: https://www.youtube.com/'
+         -H 'Sec-Fetch-Dest: empty' 
+         -H 'Sec-Fetch-Mode: cors' 
+         -H 'Sec-Fetch-Site: cross-site' 
+         -H 'TE: trailers'"
+
+completeurl="$newurl"
+
+echo "$completeurl"
+
+curl $completeurl > audio1.webm
+
+
+
+
 }
 
 
@@ -17,7 +42,7 @@ urlparser(){
 
 #extracting range, first element of the range and second element of the range
 
-firstvideopacketurl="https://rr3---sn-vg5obxu0opn-u0ol.googlevideo.com/videoplayback?expire=1643389466&ei=us3zYd-OFcrr1gK1yrfQDg&ip=[YOUR_IP_ADDRESS]&id=o-AGu5Bkuv6H1yIPzrFx47YUSFDvh9pd3QbyTaLcvTbm3F&itag=244&aitags=133%2C134%2C135%2C136%2C160%2C242%2C243%2C244%2C247%2C278%2C298%2C299%2C302%2C303&source=youtube&requiressl=yes&mh=4d&mm=31%2C29&mn=sn-vg5obxu0opn-u0ol%2Csn-hpa7kn7l&ms=au%2Crdu&mv=m&mvi=3&pl=21&initcwndbps=315000&spc=4ocVC8QNrNGU7l92d0SWd_xzx5r9&vprv=1&mime=video%2Fwebm&ns=Zcmso9RLRPNwenWVZtg2l9EG&gir=yes&clen=55228321&dur=1073.367&lmt=1638749812310699&mt=1643367683&fvip=3&keepalive=yes&fexp=24001373%2C24007246&c=WEB&txp=5535432&n=eup3w8yovkOAFA&sparams=expire%2Cei%2Cip%2Cid%2Caitags%2Csource%2Crequiressl%2Cspc%2Cvprv%2Cmime%2Cns%2Cgir%2Cclen%2Cdur%2Clmt&sig=AOq0QJ8wRAIgbXAgLxKE_MmIfxAq_2B2av3X-M6wWJcUF6YYv-sokTECIFSteGi1UQmCf-G7q8kn_HhQa85AtYq9rrtH6cblLt4w&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Cinitcwndbps&lsig=AG3C_xAwRQIhAIIYw6PKBBeArI4tJtyXxHYdmYLRZTyUWzQLeS5D3Ut6AiANovx0mG_g_KUSmwaaE3-XQquyOo0vB6g28CrOWE8xoA%3D%3D&alr=yes&cpn=X6f8jXVgb6-XeSMI&cver=2.20220126.11.00&range=0-5186021&rn=24&rbuf=85248&pot=GpsBCm4QZM2LRDg-U3xC3wn3dnl2ZmPxGAI6bc384ll2Idj6orQOh2pMJAlPrIyja1Lz_oMzF9ueKux5-N6fTmwLG4sEvzDkwF-iT51J_3TQu5MMfMNYZcGAkfcnx0iWU9FToaKCSCIHQB7Yk60KdYVk-xIpATwYQQ7qYGQ3CUsG3oqtsfWJ0fKm2ONByzwyafvGekDowjwLVujW_x8=' "
+firstvideopacketurl="https://rr1---sn-vg5obxu0opn-u0ol.googlevideo.com/videoplayback?expire=1643406706&ei=EhH0Yee7E9SP1gK_863wDw&ip=[YOUR_IP_ADDRESS]&id=o-ACVwt32cUcbvgvOAl9hu0x_JoZ5U14z_yPY7htELUyGP&itag=251&source=youtube&requiressl=yes&mh=H4&mm=31,29&mn=sn-vg5obxu0opn-u0ol,sn-hpa7znz6&ms=au,rdu&mv=m&mvi=1&pl=21&initcwndbps=300000&vprv=1&mime=audio/webm&ns=1SOzhtC_0_DTCJ6_MgencwwG&gir=yes&clen=1075046&dur=85.021&lmt=1610643240135885&mt=1643384744&fvip=1&keepalive=yes&fexp=24001373,24007246&c=WEB&txp=5432434&n=WHKAEPCSC38wpA&sparams=expire,ei,ip,id,itag,source,requiressl,vprv,mime,ns,gir,clen,dur,lmt&sig=AOq0QJ8wRQIgCipskWQnEdISkJdihuRTE6vrZM9FOry2R6HtG31rZyUCIQDSm2FCVx2n9tGH6kjOUN9dNq3kR-BvW4vzY7ayKowfOA==&lsparams=mh,mm,mn,ms,mv,mvi,pl,initcwndbps&lsig=AG3C_xAwRgIhAL98uHe-Db54ZKg4AY4EOx5Vhx2_SQmq23GKkhL-Wt5sAiEAh5dZDn6KzCAfdD7b7jg-UY8voT1ypn3s5pAC47TrpHE=&alr=yes&cpn=3fTC6dXGvWTyU9Vh&cver=2.20220126.11.00&range=197024-262559&rn=12&rbuf=3595"
 
 
 fileurl=$( echo "$firstvideopacketurl" > fileurl.txt)
@@ -66,12 +91,12 @@ sed -i "s/$range/$rangeinupdatedfile/g" fileurl.txt
 
 nouveauurl=$(<fileurl.txt)
 
-echo "le nouveau url :::::::::: $nouveauurl"
+#echo "le nouveau url :::::::::: $nouveauurl"
 
 }
 
 download
 
-urlparser
+
 
 
