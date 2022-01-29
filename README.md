@@ -11,8 +11,8 @@ In the desktop and run this docker command which will automatically download the
    
    -build image 
   
-   docker build -t video-download:latest .
+     docker build -t video-download:latest .
    
    -run the image  
    
-    docker run -it -v /root/Desktop/youtube_download/download_container:/data --name video video-download:latest
+     docker run -it -v /root/Desktop/youtube_download/download_container:/data --name video video-download:latest
